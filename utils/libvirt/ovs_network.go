@@ -62,7 +62,7 @@ func (ovs *OpenVSwitch) Close() {
 	ovs.svc.VSwitch.DeleteBridge(ovs.bridge)
 }
 
-func (ovs *OpenVSwitch) CreateInterface(driver string) (*Interface, error) {
+func (ovs *OpenVSwitch) CreateInterface(driver,network string) (*Interface, error) {
 	now := uuid.NewString()
 	err := ovs.svc.VSwitch.AddPort(ovs.bridge, now)
 	if err != nil {

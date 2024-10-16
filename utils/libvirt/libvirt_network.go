@@ -100,18 +100,23 @@ func (ovs *LibvirtNetwork) Close() {
 
 }
 
-func (ovs *LibvirtNetwork) CreateInterface(driver string) (*Interface, error) {
+func (ovs *LibvirtNetwork) CreateInterface(driver,network string) (*Interface, error) {
 	nets, _, _ := ovs.conn.ConnectListAllNetworks(1, libvirt.ConnectListNetworksActive)
-
-	if len(nets) == 0 {
-		return nil, fmt.Errorf("not found any vnet")
+	found := false
+	for _,net  := range nets {
+		if net.Name == network {
+			found = true
+		}
+	}
+	if !found {
+		return nil,fmt.Errorf("network %s not found",network)
 	}
 
-	Name := nets[0].Name
+	n := network
 	return &Interface{
 		Type: "network",
 		Source: &InterfaceSource{
-			Network: &Name,
+			Network: &n,
 		},
 		Model: &struct {
 			Type *string "xml:\"type,attr\""

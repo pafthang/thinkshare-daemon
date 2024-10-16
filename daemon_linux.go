@@ -100,7 +100,7 @@ func (daemon *Daemon) DeployVM(session *packet.WorkerSession, cancel, keepalive 
 		return nil, err
 	}
 
-	iface, err := network.CreateInterface(libvirt.Virtio)
+	iface, err := network.CreateInterface(libvirt.Virtio,daemon.cluster.Interface())
 	if err != nil {
 		return nil, err
 	}

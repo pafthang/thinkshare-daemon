@@ -11,6 +11,6 @@ type DomainAddress struct {
 
 type Network interface {
 	FindDomainIPs(dom Domain) (DomainAddress, error)
-	CreateInterface(driver string) (*Interface, error)
+	CreateInterface(driver,network string) (*Interface, error)
 	Close()
 }
