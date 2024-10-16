@@ -3,7 +3,7 @@ services:
         image: pigeatgarlic/managedaemon
         restart: unless-stopped
         environment:
-            BASE_URL: https://play.0.thinkmay.net
+            BASE_URL: https://play.thinkmay.net
             SERVICE_ROLE_KEY: ${SERVICE_ROLE_KEY}
         volumes:
             - ./cluster.yaml:/cluster.yaml:rw
@@ -26,11 +26,11 @@ services:
             - 80:80
             - 443:443
         environment:
-            SERVICE_DOMAIN: play.0.thinkmay.net
-            MONITOR_DOMAIN: monitor.0.thinkmay.net
-            ADMIN_DOMAIN: admin.0.thinkmay.net
-            DATA_DOMAIN: data.0.thinkmay.net
-            MANAGE_DOMAIN: manage.0.thinkmay.net
+            SERVICE_DOMAIN: play.thinkmay.net
+            MONITOR_DOMAIN: monitor.1.thinkmay.net
+            ADMIN_DOMAIN: admin.1.thinkmay.net
+            DATA_DOMAIN: data.1.thinkmay.net
+            MANAGE_DOMAIN: manage.1.thinkmay.net
 
             ADMIN_USERNAME: thinkmay
             ADMIN_PASSWORD: thinkmayvantue
@@ -60,8 +60,8 @@ services:
             DEFAULT_ORGANIZATION_NAME: thinkmay
             DEFAULT_PROJECT_NAME: thinkmay
 
-            SUPABASE_URL: https://play.0.thinkmay.net
-            SUPABASE_PUBLIC_URL: https://play.0.thinkmay.net
+            SUPABASE_URL: https://play.thinkmay.net
+            SUPABASE_PUBLIC_URL: https://play.thinkmay.net
             SUPABASE_ANON_KEY: ${ANON_KEY}
             SUPABASE_SERVICE_KEY: ${SERVICE_ROLE_KEY}
 
